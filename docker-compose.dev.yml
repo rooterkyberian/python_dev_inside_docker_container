@@ -1,0 +1,18 @@
+version: '3.5'
+
+services:
+  app:
+    volumes:
+      - '.:/app'
+    user: ${UID}:${GID}
+    ports:
+      - 8080:8080
+    environment:
+      - USER=${USER}
+    stdin_open: true
+    tty: true
+    command: adev runserver src/server.py
+
+  mongo:
+    ports:
+      - 27017:27017
